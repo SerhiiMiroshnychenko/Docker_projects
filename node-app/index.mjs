@@ -5,4 +5,4 @@ fs.appendFile('my-file.txt', 'Файл створено Node.js', (err) => {
     console.log('Файл створено!')
 })
 
-setTimeout(() => console.log('Кінец'), 30000)
+setTimeout(() => console.log('Кінец'), 99000000)

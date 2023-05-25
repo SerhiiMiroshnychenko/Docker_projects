@@ -7,12 +7,13 @@
 
 import socket
 
-HOST     = "127.0.0.1"
-PORT   = 20001
-buffer_size  = 1024
+HOST = "127.0.0.1"
+PORT = 20001
+buffer_size = 1024
 
 # Create a datagram socket
-udp_server_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+udp_server_socket = socket.socket(
+    family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
 # Bind to address and ip
 udp_server_socket.bind((HOST, PORT))
@@ -32,7 +33,7 @@ while True:
     message = bytes_address_pair[0]
     address = bytes_address_pair[1]
     if counter == 0:
-        client_ip  = "Client IP Address:{!r}".format(address)
+        client_ip = "Client IP Address:{!r}".format(address)
         print(client_ip)
         client_msg = f'Greeting from Client: "{message.decode()}".'
 

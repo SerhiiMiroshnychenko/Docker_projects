@@ -12,11 +12,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     connection, address = s.accept()
     while connection:
         print(f'Connected with {address}')
-        while True:
-            if data := connection.recv(1024):
-                answer = data.upper()
-                connection.sendall(answer)
-                print(f'{data=}')
-                print(f'{answer=}')
-                if answer == b'EXIT':
-                    break
+        if data := connection.recv(1024):
+            answer = data.upper()
+            connection.sendall(answer)
+            print(f'{data=}')
+            print(f'{answer=}')
+            if answer == b'EXIT':
+                break

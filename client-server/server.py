@@ -11,7 +11,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     while connection:
         print(f'Connected with {address}')
         while True:
-            if data := connection.recv(1024):
-                connection.sendall(data.upper())
-            else:
+            data = connection.recv(1024)
+            answer = data.upper()
+            connection.sendall(answer)
+            if answer == 'EXIT':
                 break

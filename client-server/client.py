@@ -18,6 +18,14 @@ while True:
     # Send to server using created UDP socket
     udp_client_socket.sendto(bytes_to_send, server_address_port)
 
-    msg_from_server = udp_client_socket.recvfrom(buffer_size)
-    msg = msg_from_server[0].decode()
-    print(f'Message from Server: "{msg}".')
+    # msg_from_server = udp_client_socket.recvfrom(buffer_size)
+    # msg = msg_from_server[0]
+    #
+    # print(f'Message from server: {msg.decode()}')
+    try:
+        msgFromServer = udp_client_socket.recvfrom(buffer_size)
+        msg = "Message from Server {!r}".format(msgFromServer[0])
+        print(msg)
+    except ConnectionResetError as e:
+        print(e.__class__, e)
+

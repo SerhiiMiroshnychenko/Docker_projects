@@ -12,5 +12,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         data = s.recv(1024)
         answer = data.decode('utf8')
         print(f"Server's echo {answer}")
-        if message == 'EXIT':
+        if answer == 'EXIT':
             break

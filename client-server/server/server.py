@@ -1,7 +1,7 @@
 import socket
 
 # localhost 0.0.0.0, 127.0.0.1
-HOST = '127.0.0.1'
+HOST = 'server'
 PORT = 65432
 
 print(f'Server with HOST: {HOST} and PORT: {PORT} up and listening!')

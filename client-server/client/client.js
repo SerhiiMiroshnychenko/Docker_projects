@@ -1,6 +1,6 @@
 const net = require('net');
 
-const HOST = '127.0.0.1';
+const HOST = 'server'; // Змінено на ім'я контейнера сервера
 const PORT = 65432;
 
 const client = new net.Socket();

@@ -12,7 +12,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             break
         s.sendall(message.encode('utf8'))
         data = s.recv(1024)
-        print(f"Server's echo {data.decode('utf8')}")
-
-
-
+        answer = data.decode('utf8')
+        print(f"Server's echo {answer}")

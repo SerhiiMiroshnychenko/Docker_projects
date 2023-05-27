@@ -1,31 +1,18 @@
 import socket
 
-server_address_port = ("127.0.0.1", 20001)
-buffer_size = 1024
 
-# Create a UDP socket at client side
-udp_client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+HOST = '127.0.0.1'
+PORT = 65432
 
-udp_client_socket.sendto(str.encode('Hello UDP Server!'), server_address_port)
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    while True:
+        message = input('Enter your text: ')
+        if message == 'exit':
+            break
+        s.sendall(message.encode('utf8'))
+        data = s.recv(1024)
+        print(f"Server's echo {data.decode('utf8')}")
 
-while True:
 
-    msg_from_client = input('Please enter your message: ')
-    if msg_from_client == 'exit':
-        break
-    bytes_to_send = str.encode(msg_from_client)
-
-    # Send to server using created UDP socket
-    udp_client_socket.sendto(bytes_to_send, server_address_port)
-
-    # msg_from_server = udp_client_socket.recvfrom(buffer_size)
-    # msg = msg_from_server[0]
-    #
-    # print(f'Message from server: {msg.decode()}')
-    try:
-        msgFromServer = udp_client_socket.recvfrom(buffer_size)
-        msg = "Message from Server {!r}".format(msgFromServer[0])
-        print(msg)
-    except ConnectionResetError as e:
-        print(e.__class__, e)
 

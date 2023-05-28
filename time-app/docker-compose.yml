@@ -12,9 +12,14 @@ services:
     ports:
       - '5555:5000'
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
   mysql:
     image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password

@@ -18,7 +18,7 @@ async function saveTime() {
   const json = await res.json()
   if (json.insertId) {
     this.savedTimes.unshift({ id: json.insertId, time })
-    this.$toast.success(`Время ${time} сохранено`, { position: 'top-right' })
+    this.$toast.success(`Час ${time} збережено`, { position: 'top-right' })
   }
 }
 
@@ -29,7 +29,7 @@ async function deleteTime(id) {
   const json = await res.json()
   if (json.affectedRows) {
     this.savedTimes = this.savedTimes.filter((savedTime) => savedTime.id !== id)
-    this.$toast.error(`Время с ID ${id} удалено`, {
+    this.$toast.error(`Час з ID ${id} видалено`, {
       position: 'top-right',
     })
   }

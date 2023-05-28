@@ -11,6 +11,9 @@ services:
       - '5555:5000'
   mysql:
     image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: time_db
   adminer:
     image: adminer
     ports:

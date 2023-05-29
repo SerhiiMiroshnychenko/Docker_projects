@@ -6,9 +6,6 @@ const MYSQL_PORT = process.env.MYSQL_PORT || '3306'
 const MYSQL_PASSWORD = process.env.MYSQL_PASSWORD || 'password'
 const MYSQL_DB = process.env.MYSQL_DB || 'admin'
 
-console.log(process.env)
-console.log(process.env.MYSQL_HOST)
-
 const pool = mysql.createPool({
   connectionLimit: 100,
   host: MYSQL_HOST,

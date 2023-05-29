@@ -3,7 +3,7 @@ import Time from './components/Time.vue'
 </script>
 
 <template>
-  <Time :showSavedTimes="true" />
+  <Time :showSavedTimes="false" />
 </template>
 
 <style>
